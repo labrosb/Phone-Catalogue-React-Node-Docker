@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import colors from '../../../theme/colors';
+import Content from './DetailsContent';
 
 // A Drawer Side Menu based in Material UI
 
@@ -12,6 +14,27 @@ const useStyles = makeStyles({
     background: colors.primary,
   }
 });
+
+const Close = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  color: ${colors.background};
+  border: 0.5px solid ${colors.background};
+  border-radius: 50%;
+  position: absolute;
+  top: 20px; right: 16px;
+  cursor: pointer;
+`
+
+const renderContent = (props) => {
+  if (props.id !== undefined) {
+    return <Content {...props} />;
+  }
+  return null;
+};
 
 function DetailsDrawer(props) {
   const { onClose } = props;
@@ -35,11 +58,15 @@ function DetailsDrawer(props) {
   return (
     <Drawer
       anchor="right"
-      transitionDuration={800}
+      transitionDuration={600}
+      BackdropProps={{ invisible: true }}
+      elevation={0}
       open={open}
       onClose={handleClose}
       classes={{ paper: classes.paper }}
     >
+      <Close onClick={handleClose}> x </Close>
+      {renderContent(props)}
     </Drawer>
   );
 }
