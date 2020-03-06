@@ -32,7 +32,7 @@ const Details = styled.div`
 
 function Phone(props) {
   return (
-    <Container>
+    <Container onClick={props.onClick}>
       <ImageContainer>
         <Image src={require('../../../assets/Galaxy_S7.jpg')}/>
       </ImageContainer>
