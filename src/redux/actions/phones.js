@@ -2,12 +2,13 @@ import * as types from './types';
 import { setError, resetError } from './error';
 
 export function getPhoneList() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    // Resets error (only if an error has already taken place)
+    dispatch(resetError('phones'))
     // Temporary until backend implementation
-    getPhones()
+    return getPhones()
       .then(list => dispatch(setPhoneList(list)))
-      .then(() => dispatch(resetError('phone')))
-      .catch(err => dispatch(setError('phone', err.message)));
+      .catch(err => dispatch(setError('phones', err.message)));
   }
 }
 
