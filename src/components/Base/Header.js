@@ -21,4 +21,4 @@ const HeaderComponent = (props) => (
   </Header>
 );
 
-export default HeaderComponent;
+export default React.memo(HeaderComponent);
