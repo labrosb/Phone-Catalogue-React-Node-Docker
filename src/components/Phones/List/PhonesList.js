@@ -1,81 +1,75 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import styled from 'styled-components';
-import Content from '../../Base/Content';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import Text from '../../Base/Text';
 import Details from './../Details/DetailsDrawer';
 import Phone from './PhoneCard';
+import {
+  List, Item, ItemContent, AltContent, Redo, Spinner,
+} from './PhonesListUI';
 
-import data from '../../../assets/mobileData';
-
-const List = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding: 0 20px;
-  flex-wrap: wrap;
-  @media (max-width: 980px) {
-    padding: 0;
-  }
-`
-const Item = styled.div`
-  width: 234px;
-  margin: 17px 4%;
-  @media (max-width: 930px) {
-    margin-left: 1%;
-    margin-right: 1%;
-  }
-  @media (max-width: 500px) {
-    width: 46%;
-    margin: 2%;
-  }
-`
-const ItemContent = styled.div`
-  border-radius: 16px;
-  cursor: pointer;
-  transition: transform 200ms ease-in-out;
-  &:hover {
-    transform: translate(4px, -12px);
-    box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.06);
-  }
-`
+PhonesList.propTypes = {
+  getMobileList: PropTypes.func,
+  phones: PropTypes.array,
+};
 
 export default function PhonesList(props) {
+  const { phones, getPhoneList, error } = props;
+  const [phoneDetails, showDetails] = useState(null);
 
-  const [details, showDetails] = useState(null);
+  useEffect(() => {
+    getPhoneList();
+  }, [getPhoneList]);
 
   const onProductClick = useCallback((ev) => {
-    /* Approach to avoid declaring lambda function inside the onClick event */
+    // Approach to avoid declaring a lambda function inside the onClick event
     const index = ev.target.dataset.index;
-    showDetails(data[index]);
-  }, []);
+    showDetails(phones[index]);
+  }, [phones]);
 
   const hideDetails = useCallback(() => {
     showDetails(null);
   }, []);
 
-  // Memoizing output to prevent repeating the maps loop on future renders
-  const renderList = useMemo(() => {
-    return data.map((item, index) => (
-      <Item key={`phone-${item.id}`}>
-        <ItemContent
-          data-index={index}
-          onClick={onProductClick}
-        >
-          <Phone
-            name={item.name}
-            price={item.price}
-            disableEvents={true}
-          />
-        </ItemContent>
-      </Item>
-    ));
-  }, [onProductClick]);
+  const renderAltContent = useCallback(() => {
+    if (error) {
+      return (
+        <AltContent>
+          <Redo onClick={getPhoneList} />
+          <Text>{error}</Text>
+        </AltContent>
+      );
+    }
+    return (
+      <AltContent>
+        <Spinner />
+      </AltContent>
+    );
+  }, [error, getPhoneList]);
+
+  // Memoizing phones list to prevent repeating the loop on future renders
+  const list = useMemo(() => {
+    if (phones) {
+      return phones.map((item, index) => (
+        <Item key={`phone-${item.id}`}>
+          <ItemContent data-index={index} onClick={onProductClick}>
+            <Phone
+              name={item.name}
+              price={item.price}
+              disableEvents={true}
+            />
+          </ItemContent>
+        </Item>
+      ));
+    }
+    return null;
+  }, [phones, onProductClick]);
 
   return (
-    <Content>
-      <Details
-        onClose={hideDetails}
-        {...details}
-      />
-      <List>{renderList}</List>
-    </Content>
+    <>
+      <Details onClose={hideDetails} {...phoneDetails} />
+      <List>
+        {list || renderAltContent()}
+      </List>
+    </>
   );
 }
