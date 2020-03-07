@@ -3,18 +3,15 @@ import styled from 'styled-components';
 import Text from '../../Base/Text';
 import colors from '../../../theme/colors';
 
+/* Component presenting a main-info card
+   Can be used either in a container or independently */
+
 const Container = styled.div`
-  width: 234px;
-  margin: 17px 4%;
+  width: ${props => props.width || '100%'};
   background-color: ${colors.background};
   border: 1px dashed ${colors.fade};
   border-radius: 16px;
-  cursor: pointer;
-  transition: transform 200ms ease-in-out;
-  &:hover {
-    transform: translate(4px, -12px);
-    box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.06);
-  }
+  pointer-events: ${props => props.disableEvents ? 'none' : 'auto'};
 `
 const ImageContainer = styled.div`
   display: flex;
@@ -32,7 +29,7 @@ const Details = styled.div`
 
 function Phone(props) {
   return (
-    <Container onClick={props.onClick}>
+    <Container disableEvents={props.disableEvents}>
       <ImageContainer>
         <Image src={require('../../../assets/Galaxy_S7.jpg')}/>
       </ImageContainer>
