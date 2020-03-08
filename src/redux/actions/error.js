@@ -4,7 +4,7 @@ export function resetError(errorType) {
   return (dispatch, getState) => {
     // Check if an error of the given type exists
     const error = getState().error[errorType];
-    // If it exists, reset...
+    // if it exists, reset...
     if (error) {
       dispatch(setError(errorType, null));
     }

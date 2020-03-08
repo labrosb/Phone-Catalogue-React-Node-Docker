@@ -22,7 +22,7 @@ export const Item = styled.div`
     margin-left: 1%;
     margin-right: 1%;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 508px) {
     width: 46%;
     margin: 2%;
   }
