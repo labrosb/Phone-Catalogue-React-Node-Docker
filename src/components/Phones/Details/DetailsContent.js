@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Text from '../../Base/Text';
 
+const imageHost = process.env.REACT_APP_IMAGES_HOST;
+
 // Component presenting the Details to be presented in the Drawer
 
 const FlexField = styled.div`
@@ -18,7 +20,7 @@ const Cell = styled.div`
   padding-right: ${props => props.spacing ? '40px' : 0};
 `
 const Content = styled.div`
-  padding: 60px 22px;
+  padding: 50px 22px;
 `
 const MainField = styled.div`
   display: flex;
@@ -36,7 +38,7 @@ function DetailsContent(props) {
     <Content>
       <MainField>
         <FlexField>
-          <Image src={require(`../../../assets/Galaxy_S7.jpg`)}/>
+          <Image src={`${imageHost}/${props.imageFileName}`}/>
         </FlexField>
         <FlexField>
           <Text size="small" color="background">Model : &nbsp; {props.name}</Text>

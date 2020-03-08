@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Text from '../../Base/Text';
 import colors from '../../../theme/colors';
 
+const imageHost = process.env.REACT_APP_IMAGES_HOST;
+
 /* Component presenting a main-info card
    Can be used either in a container or independently */
 
@@ -18,9 +20,13 @@ const ImageContainer = styled.div`
   padding-top: 20px;
 `
 const Image = styled.img`
-  width: 48%;
+  height: 226px;
+  max-width: 48%;
   margin: auto;
   border-radius: 20px;
+  @media (max-width: 508px) {
+    height: auto;
+  }
 `
 const Details = styled.div`
   box-sizing: border-box;
@@ -31,7 +37,7 @@ function Phone(props) {
   return (
     <Container disableEvents={props.disableEvents}>
       <ImageContainer>
-        <Image src={require('../../../assets/Galaxy_S7.jpg')}/>
+        <Image src={`${imageHost}/${props.imageFileName}`}/>
       </ImageContainer>
       <Details>
         <Text align="center">{props.name}</Text>

@@ -53,6 +53,7 @@ export default function PhonesList(props) {
         <Item key={`phone-${item.id}`}>
           <ItemContent data-index={index} onClick={onProductClick}>
             <Phone
+              imageFileName={item.imageFileName}
               name={item.name}
               price={item.price}
               disableEvents={true}
