@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
@@ -15,10 +16,15 @@ const LogoText = styled.h1`
   text-align: center;
   color: ${colors.background};
 `
+
 const HeaderComponent = (props) => (
   <Header>
     <LogoText>{props.title}</LogoText>
   </Header>
 );
+
+HeaderComponent.propTypes = {
+  title: PropTypes.string,
+};
 
 export default React.memo(HeaderComponent);

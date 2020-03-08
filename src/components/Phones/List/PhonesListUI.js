@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import loadingIcon from '../../../assets/loading.svg';
 import redo from '../../../assets/redo-solid.svg';
@@ -51,8 +52,14 @@ const RedoIcon = styled.img`
   margin-bottom: -6px;
   cursor: pointer;
 `
+
 export const Spinner = () =>
   <SpinnerIcon src={loadingIcon} alt="Loading..."/> ;
 
+
 export const Redo = (props) =>
   <RedoIcon src={redo} alt="Redo" onClick={props.onClick}/>
+
+Redo.propTypes = {
+  onClick: PropTypes.func,
+};

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
@@ -70,5 +71,14 @@ function DetailsDrawer(props) {
     </Drawer>
   );
 }
+
+DetailsDrawer.propTypes = {
+  onClose: PropTypes.func,
+  id: PropTypes.number,
+};
+
+renderContent.propTypes = {
+  id: PropTypes.number,
+};
 
 export default React.memo(DetailsDrawer);

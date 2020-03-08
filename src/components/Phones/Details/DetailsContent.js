@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Text from '../../Base/Text';
 
@@ -69,5 +70,17 @@ function DetailsContent(props) {
     </Content>
   );
 }
+
+DetailsContent.propTypes = {
+  price: PropTypes.number,
+  ram: PropTypes.number,
+  imageFileName: PropTypes.string,
+  name: PropTypes.string,
+  color: PropTypes.string,
+  description: PropTypes.string,
+  manufacturer: PropTypes.string,
+  screen: PropTypes.string,
+  processor: PropTypes.string,
+};
 
 export default DetailsContent;

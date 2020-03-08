@@ -3,7 +3,7 @@ import * as types from './types';
 import { setError, resetError } from './error';
 
 export function getPhoneList() {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     // Resets error (only if an error has already taken place)
     dispatch(resetError('phones'))
 

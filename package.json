@@ -41,7 +41,9 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
     "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-react": "^7.19.0",
     "fibers": "^4.0.2",
     "node-sass": "^4.13.1",
     "sass": "^1.26.2",

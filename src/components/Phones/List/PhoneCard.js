@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Text from '../../Base/Text';
 import colors from '../../../theme/colors';
@@ -47,6 +48,14 @@ function Phone(props) {
       </Details>
     </Container>
   );
+}
+
+Phone.propTypes = {
+  disableEvents: PropTypes.bool,
+  imageFileName: PropTypes.string,
+  name: PropTypes.string,
+  price: PropTypes.number,
 };
+
 // wrap with React.memo if reused outside of the useMemo() scope
 export default Phone;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReduxConnector from '../../redux/connector';
 import Header from '../Base/Header';
 import Content from '../Base/Content';
@@ -14,6 +15,10 @@ function PhonesScreen(props) {
       </Content>
     </>
   );
-};
+}
+
+PhonesScreen.propTypes = {
+  error: PropTypes.object,
+}
 
 export default ReduxConnector(PhonesScreen);

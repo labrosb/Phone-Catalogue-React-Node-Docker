@@ -7,12 +7,7 @@ import {
   List, Item, ItemContent, AltContent, Redo, Spinner,
 } from './PhonesListUI';
 
-PhonesList.propTypes = {
-  getMobileList: PropTypes.func,
-  phones: PropTypes.array,
-};
-
-export default function PhonesList(props) {
+function PhonesList(props) {
   const { phones, getPhoneList, error } = props;
   const [phoneDetails, showDetails] = useState(null);
 
@@ -74,3 +69,12 @@ export default function PhonesList(props) {
     </>
   );
 }
+
+PhonesList.propTypes = {
+  getMobileList: PropTypes.func,
+  phones: PropTypes.array,
+  getPhoneList: PropTypes.func,
+  error: PropTypes.string,
+};
+
+export default PhonesList;
