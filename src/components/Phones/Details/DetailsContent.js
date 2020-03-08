@@ -11,43 +11,49 @@ const FlexField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
+`;
 const Rows = styled.div`
   display: table-row;
   margin: auto;
-`
+`;
 const Cell = styled.div`
   display: table-cell;
-  padding-right: ${props => props.spacing ? '40px' : 0};
-`
+  padding-right: ${props => (props.spacing ? '40px' : 0)};
+`;
 const Content = styled.div`
   padding: 50px 22px;
-`
+`;
 const MainField = styled.div`
   display: flex;
-`
+`;
 const Image = styled.img`
   width: 90px;
   margin-right: 20px;
-`
+`;
 const Specs = styled.div`
   padding: 6px 0;
-`
+`;
 
 function DetailsContent(props) {
   return (
     <Content>
       <MainField>
         <FlexField>
-          <Image src={`${imageHost}/${props.imageFileName}`}/>
+          <Image src={`${imageHost}/${props.imageFileName}`} />
         </FlexField>
         <FlexField>
-          <Text size="small" color="background">Model : &nbsp; {props.name}</Text>
-          <Text size="small" color="background">Color : &nbsp; {props.color}</Text>
-          <Text size="small" color="background">Price : &nbsp; {props.price} €</Text>
+          <Text size="small" color="background">
+            Model : &nbsp; {props.name}
+          </Text>
+          <Text size="small" color="background">
+            Color : &nbsp; {props.color}
+          </Text>
+          <Text size="small" color="background">
+            Price : &nbsp; {props.price} €
+          </Text>
         </FlexField>
       </MainField>
-      <br/>
+      <br />
       <Text color="background" align="center">Description</Text>
       <Text size="small" color="background">{props.description}</Text>
       <Specs>
@@ -80,7 +86,7 @@ DetailsContent.propTypes = {
   description: PropTypes.string,
   manufacturer: PropTypes.string,
   screen: PropTypes.string,
-  processor: PropTypes.string,
+  processor: PropTypes.string
 };
 
 export default DetailsContent;

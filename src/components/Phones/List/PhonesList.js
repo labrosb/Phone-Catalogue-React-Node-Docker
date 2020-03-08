@@ -1,23 +1,27 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../Base/Text';
-import Details from './../Details/DetailsDrawer';
+import Details from '../Details/DetailsDrawer';
 import Phone from './PhoneCard';
 import {
-  List, Item, ItemContent, AltContent, Redo, Spinner,
+  List,
+  Item,
+  ItemContent,
+  AltContent,
+  Redo,
+  Spinner
 } from './PhonesListUI';
 
-function PhonesList(props) {
-  const { phones, getPhoneList, error } = props;
+function PhonesList({ phones, getPhoneList, error }) {
   const [phoneDetails, showDetails] = useState(null);
 
   useEffect(() => {
     getPhoneList();
   }, [getPhoneList]);
 
-  const onProductClick = useCallback((ev) => {
+  const onProductClick = useCallback(({ target }) => {
     // Approach to avoid declaring a lambda function inside the onClick event
-    const index = ev.target.dataset.index;
+    const { index } = target.dataset;
     showDetails(phones[index]);
   }, [phones]);
 
@@ -51,7 +55,7 @@ function PhonesList(props) {
               imageFileName={item.imageFileName}
               name={item.name}
               price={item.price}
-              disableEvents={true}
+              disableEvents
             />
           </ItemContent>
         </Item>
@@ -63,9 +67,7 @@ function PhonesList(props) {
   return (
     <>
       <Details onClose={hideDetails} {...phoneDetails} />
-      <List>
-        {list || renderAltContent()}
-      </List>
+      <List>{list || renderAltContent()}</List>
     </>
   );
 }
@@ -74,7 +76,7 @@ PhonesList.propTypes = {
   getMobileList: PropTypes.func,
   phones: PropTypes.array,
   getPhoneList: PropTypes.func,
-  error: PropTypes.string,
+  error: PropTypes.string
 };
 
 export default PhonesList;

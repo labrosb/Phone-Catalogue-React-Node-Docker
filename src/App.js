@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import PhonesList from './components/Phones/PhonesScreen';
@@ -11,11 +11,11 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-         <Route exact path="/">
-          <PhonesList />
-        </Route>
-       </Switch>
-     </Router>
+          <Route exact path="/">
+            <PhonesList />
+          </Route>
+        </Switch>
+      </Router>
     </Provider>
   );
 }

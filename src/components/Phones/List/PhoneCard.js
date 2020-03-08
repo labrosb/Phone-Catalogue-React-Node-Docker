@@ -14,12 +14,12 @@ const Container = styled.div`
   background-color: ${colors.background};
   border: 1px dashed ${colors.fade};
   border-radius: 16px;
-  pointer-events: ${props => props.disableEvents ? 'none' : 'auto'};
-`
+  pointer-events: ${props => (props.disableEvents ? 'none' : 'auto')};
+`;
 const ImageContainer = styled.div`
   display: flex;
   padding-top: 20px;
-`
+`;
 const Image = styled.img`
   height: 226px;
   max-width: 48%;
@@ -28,23 +28,21 @@ const Image = styled.img`
   @media (max-width: 508px) {
     height: auto;
   }
-`
+`;
 const Details = styled.div`
   box-sizing: border-box;
   padding: 6px 16px;
-`
+`;
 
-function Phone(props) {
+function Phone({ disableEvents, imageFileName, name, price }) {
   return (
-    <Container disableEvents={props.disableEvents}>
+    <Container disableEvents={disableEvents}>
       <ImageContainer>
-        <Image src={`${imageHost}/${props.imageFileName}`}/>
+        <Image src={`${imageHost}/${imageFileName}`} />
       </ImageContainer>
       <Details>
-        <Text align="center">{props.name}</Text>
-        <Text align="center" color="special">
-          {props.price} €
-        </Text>
+        <Text align="center">{name}</Text>
+        <Text align="center" color="special">{price} €</Text>
       </Details>
     </Container>
   );
@@ -54,7 +52,7 @@ Phone.propTypes = {
   disableEvents: PropTypes.bool,
   imageFileName: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.number
 };
 
 // wrap with React.memo if reused outside of the useMemo() scope

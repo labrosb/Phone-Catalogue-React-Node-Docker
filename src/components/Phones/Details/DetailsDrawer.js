@@ -4,7 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import colors from '../../../theme/colors';
-import Content from './DetailsContent';
+import DetailsContent from './DetailsContent';
 
 // A Drawer Side Menu based in Material UI
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   paper: {
     width: '30%',
     minWidth: 320,
-    background: colors.primary,
+    background: colors.primary
   }
 });
 
@@ -26,20 +26,19 @@ const Close = styled.div`
   border: 0.5px solid ${colors.background};
   border-radius: 50%;
   position: absolute;
-  top: 20px; right: 16px;
+  top: 20px;
+  right: 16px;
   cursor: pointer;
-`
+`;
 
-const renderContent = (props) => {
-  if (props.id !== undefined) {
-    return <Content {...props} />;
+const renderContent = (id, { ...rest }) => {
+  if (id !== undefined) {
+    return <DetailsContent {...rest} />;
   }
   return null;
 };
 
-function DetailsDrawer(props) {
-  const { onClose } = props;
-
+function DetailsDrawer({ onClose, id, ...rest }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -53,8 +52,8 @@ function DetailsDrawer(props) {
   }, [onClose]);
 
   useEffect(() => {
-    if (props.id !== undefined) handleOpen();
-  }, [props.id, handleOpen]);
+    if (id !== undefined) handleOpen();
+  }, [id, handleOpen]);
 
   return (
     <Drawer
@@ -67,18 +66,18 @@ function DetailsDrawer(props) {
       classes={{ paper: classes.paper }}
     >
       <Close onClick={handleClose}> x </Close>
-      {renderContent(props)}
+      {renderContent(id, { ...rest })}
     </Drawer>
   );
 }
 
 DetailsDrawer.propTypes = {
   onClose: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.number
 };
 
 renderContent.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.number
 };
 
 export default React.memo(DetailsDrawer);

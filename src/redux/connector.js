@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import Actions from './actions';
 
 function ReduxConnector(component) {
+  const mapStateToProps = state => state;
 
-  const mapStateToProps = (state) => state;
+  const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
 
-  const mapDispatchToProps = (dispatch) =>
-    bindActionCreators(Actions, dispatch);
-
-  return connect(mapStateToProps, mapDispatchToProps)(component)
+  return connect(mapStateToProps, mapDispatchToProps)(component);
 }
 
 export default ReduxConnector;

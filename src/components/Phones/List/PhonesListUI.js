@@ -15,7 +15,7 @@ export const List = styled.div`
   @media (max-width: 980px) {
     padding: 0;
   }
-`
+`;
 export const Item = styled.div`
   width: 234px;
   margin: 17px 4%;
@@ -27,39 +27,40 @@ export const Item = styled.div`
     width: 46%;
     margin: 2%;
   }
-`
+`;
 export const ItemContent = styled.div`
   border-radius: 16px;
   cursor: pointer;
   transition: transform 200ms ease-in-out;
   &:hover {
     transform: translate(4px, -12px);
-    box-shadow: 0px 0px 60px 0px rgba(0,0,0,0.06);
+    box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.06);
   }
-`
+`;
 export const AltContent = styled.div`
   height: 58vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 const SpinnerIcon = styled.img`
   width: 80px;
-`
+`;
 const RedoIcon = styled.img`
   width: 18px;
   margin-bottom: -6px;
   cursor: pointer;
-`
+`;
 
-export const Spinner = () =>
-  <SpinnerIcon src={loadingIcon} alt="Loading..."/> ;
+export const Spinner = () => (
+  <SpinnerIcon src={loadingIcon} alt="Loading..." />
+);
 
-
-export const Redo = (props) =>
-  <RedoIcon src={redo} alt="Redo" onClick={props.onClick}/>
+export const Redo = props => (
+  <RedoIcon src={redo} alt="Redo" onClick={props.onClick} />
+);
 
 Redo.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };

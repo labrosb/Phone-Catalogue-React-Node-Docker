@@ -9,22 +9,22 @@ const Header = styled.header`
   padding: 12px;
   box-sizing: border-box;
   background-color: ${colors.primary};
-`
+`;
 const LogoText = styled.h1`
   font-family: ${layout.fontSpecial};
   font-size: 1.6em;
   text-align: center;
   color: ${colors.background};
-`
+`;
 
-const HeaderComponent = (props) => (
+const HeaderComponent = ({ title }) => (
   <Header>
-    <LogoText>{props.title}</LogoText>
+    <LogoText>{title}</LogoText>
   </Header>
 );
 
 HeaderComponent.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default React.memo(HeaderComponent);

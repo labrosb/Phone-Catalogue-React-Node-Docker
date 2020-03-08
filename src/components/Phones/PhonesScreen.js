@@ -9,16 +9,16 @@ function PhonesScreen(props) {
   const { error, ...otherProps } = props;
   return (
     <>
-      <Header title="Mobile Phones"/>
+      <Header title="Mobile Phones" />
       <Content>
-        <PhonesList error={error.phones} {...otherProps}/>
+        <PhonesList error={error.phones} {...otherProps} />
       </Content>
     </>
   );
 }
 
 PhonesScreen.propTypes = {
-  error: PropTypes.object,
-}
+  error: PropTypes.object
+};
 
 export default ReduxConnector(PhonesScreen);
