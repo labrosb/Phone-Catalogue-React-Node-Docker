@@ -34,28 +34,32 @@ const Specs = styled.div`
   padding: 6px 0;
 `;
 
-function DetailsContent(props) {
+function DetailsContent({
+  imageFileName,
+  name,
+  color,
+  price,
+  description,
+  manufacturer,
+  screen,
+  processor,
+  ram
+}) {
   return (
-    <Content>
+    <Content id="drawer-content">
       <MainField>
         <FlexField>
-          <Image src={`${imageHost}/${props.imageFileName}`} />
+          <Image src={`${imageHost}/${imageFileName}`} />
         </FlexField>
         <FlexField>
-          <Text size="small" color="background">
-            Model : &nbsp; {props.name}
-          </Text>
-          <Text size="small" color="background">
-            Color : &nbsp; {props.color}
-          </Text>
-          <Text size="small" color="background">
-            Price : &nbsp; {props.price} €
-          </Text>
+          <Text size="small" color="background">Model : &nbsp; {name}</Text>
+          <Text size="small" color="background">Color : &nbsp; {color}</Text>
+          <Text size="small" color="background">Price : &nbsp; {price} €</Text>
         </FlexField>
       </MainField>
       <br />
       <Text color="background" align="center">Description</Text>
-      <Text size="small" color="background">{props.description}</Text>
+      <Text size="small" color="background">{description}</Text>
       <Specs>
         <Text color="background" align="center">Specifications</Text>
         <Rows>
@@ -66,10 +70,10 @@ function DetailsContent(props) {
             <Text size="small" color="background">Ram :</Text>
           </Cell>
           <Cell>
-            <Text size="small" color="background">{props.manufacturer}</Text>
-            <Text size="small" color="background">{props.screen}</Text>
-            <Text size="small" color="background">{props.processor}</Text>
-            <Text size="small" color="background">{props.ram}</Text>
+            <Text size="small" color="background">{manufacturer}</Text>
+            <Text size="small" color="background">{screen}</Text>
+            <Text size="small" color="background">{processor}</Text>
+            <Text size="small" color="background">{ram}</Text>
           </Cell>
         </Rows>
       </Specs>
