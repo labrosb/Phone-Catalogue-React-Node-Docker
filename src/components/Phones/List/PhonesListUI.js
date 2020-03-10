@@ -17,13 +17,13 @@ export const List = styled.div`
   }
 `;
 export const Item = styled.div`
-  width: 200px;
+  width: 230px;
   margin: 17px 4%;
   @media (max-width: 930px) {
     margin-left: 1%;
     margin-right: 1%;
   }
-  @media (max-width: 460px) {
+  @media (max-width: 508px) {
     width: 46%;
     margin: 2%;
   }

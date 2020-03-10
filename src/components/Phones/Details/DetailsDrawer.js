@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 const Close = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 28px;
   height: 28px;
   font-size: 18px;
