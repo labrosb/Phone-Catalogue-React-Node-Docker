@@ -21,11 +21,11 @@ const ImageContainer = styled.div`
   padding-top: 20px;
 `;
 const Image = styled.img`
-  height: 226px;
+  height: 180px;
   max-width: 48%;
   margin: auto;
   border-radius: 20px;
-  @media (max-width: 508px) {
+  @media (max-width: 460px) {
     height: auto;
   }
 `;
