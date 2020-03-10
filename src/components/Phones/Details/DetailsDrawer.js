@@ -65,7 +65,7 @@ function DetailsDrawer({ onClose, id, ...rest }) {
       onClose={handleClose}
       classes={{ paper: classes.paper }}
     >
-      <Close onClick={handleClose}> x </Close>
+      <Close id="xButton" onClick={handleClose}> x </Close>
       {renderContent(id, { ...rest })}
     </Drawer>
   );
