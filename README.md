@@ -20,9 +20,9 @@ We are using Jest along with puppeteer to perform realistic end-to-end test for 
 
 1. Keep docker running (repeat the steps of the #usage section if its not)
 
-2. Install puppeteer: "npm i puppeteer"
+2. Navigate to the ./Front-End folder and install the project packages locally executing: "npm install"
 
-3. Navigate to the ./Front-End folder and install the project packages locally executing: "npm install"
+3. Install puppeteer: "npm i puppeteer"
 
 4. Execute the command: "npm run TestVisual"
 
