@@ -20,7 +20,7 @@ We are using Jest along with puppeteer to perform realistic end-to-end test for 
 
 1. Keep docker running (repeat the steps of the #usage section if its not)
 
-2. Install puppeteer: "npm -i -g install" or "npm i puppeteer"
+2. Install puppeteer: "npm i puppeteer"
 
 3. Navigate to the ./Front-End folder and install the project packages locally executing: "npm install"
 
@@ -30,4 +30,4 @@ We are using Jest along with puppeteer to perform realistic end-to-end test for 
 
 6. After the automated actions finish, the browser will close and you will see the summary with the passed/failed tests
 
-* - If you want to run tests without seing the actions on the browser run "npm run test instead
+* If you want to run faster tests without visual represantation run "npm test" instead
