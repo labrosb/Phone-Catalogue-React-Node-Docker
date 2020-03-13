@@ -5,8 +5,6 @@ WORKDIR /phone-catalogue/client
 
 COPY package.json /phone-catalogue/client
 
-COPY . /client/phone-catalogue/
-
 RUN apk add python \
 			make \
 			g++ \
