@@ -1,56 +1,20 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../Base/Text';
-import Details from '../Details/DetailsDrawer';
 import Phone from './PhoneCard';
-import {
-  List,
-  Item,
-  ItemContent,
-  AltContent,
-  Redo,
-  Spinner
-} from './PhonesListUI';
+import { List, Item, ItemContent } from './PhonesListUI';
 
-function PhonesList({ phones, getPhoneList, error }) {
-  const [phoneDetails, showDetails] = useState(null);
-
-  useEffect(() => {
-    getPhoneList();
-  }, [getPhoneList]);
-
-  const onProductClick = useCallback(({ target }) => {
+function PhonesList({ phones, onPhoneClick }) {
+  const onItemClick = useCallback(({ target }) => {
     // Approach to avoid declaring a lambda function inside the onClick event
     const { index } = target.dataset;
-    showDetails(phones[index]);
-  }, [phones]);
+    onPhoneClick(phones[index]);
+  }, [phones, onPhoneClick]);
 
-  const hideDetails = useCallback(() => {
-    showDetails(null);
-  }, []);
-
-  const renderAltContent = useCallback(() => {
-    if (error) {
-      return (
-        <AltContent>
-          <Redo onClick={getPhoneList} />
-          <Text>{error}</Text>
-        </AltContent>
-      );
-    }
-    return (
-      <AltContent>
-        <Spinner />
-      </AltContent>
-    );
-  }, [error, getPhoneList]);
-
-  // Memoizing phones list to prevent repeating the loop on future renders
-  const list = useMemo(() => {
+  const list = () => {
     if (phones) {
       return phones.map((item, index) => (
         <Item key={`phone-${item.id}`}>
-          <ItemContent data-index={index} onClick={onProductClick}>
+          <ItemContent data-index={index} onClick={onItemClick}>
             <Phone
               imageFileName={item.imageFileName}
               name={item.name}
@@ -62,21 +26,16 @@ function PhonesList({ phones, getPhoneList, error }) {
       ));
     }
     return null;
-  }, [phones, onProductClick]);
+  };
 
   return (
-    <>
-      <Details onClose={hideDetails} {...phoneDetails} />
-      <List>{list || renderAltContent()}</List>
-    </>
+    <List>{list()}</List>
   );
 }
 
 PhonesList.propTypes = {
-  getMobileList: PropTypes.func,
   phones: PropTypes.array,
-  getPhoneList: PropTypes.func,
-  error: PropTypes.string
+  onPhoneClick: PropTypes.func
 };
 
-export default PhonesList;
+export default React.memo(PhonesList);

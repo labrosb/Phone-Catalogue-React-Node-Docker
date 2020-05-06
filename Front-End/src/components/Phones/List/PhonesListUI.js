@@ -1,8 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import loadingIcon from '../../../assets/loading.svg';
-import redo from '../../../assets/redo-solid.svg';
 
 /* UI Components for PhoneList.js
   Added seperately for better readability */
@@ -37,30 +33,3 @@ export const ItemContent = styled.div`
     box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.06);
   }
 `;
-export const AltContent = styled.div`
-  height: 58vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-const SpinnerIcon = styled.img`
-  width: 80px;
-`;
-const RedoIcon = styled.img`
-  width: 18px;
-  margin-bottom: -6px;
-  cursor: pointer;
-`;
-
-export const Spinner = () => (
-  <SpinnerIcon src={loadingIcon} alt="Loading..." />
-);
-
-export const Redo = props => (
-  <RedoIcon src={redo} alt="Redo" onClick={props.onClick} />
-);
-
-Redo.propTypes = {
-  onClick: PropTypes.func
-};

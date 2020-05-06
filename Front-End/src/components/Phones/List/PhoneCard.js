@@ -55,5 +55,4 @@ Phone.propTypes = {
   price: PropTypes.number
 };
 
-// wrap with React.memo if reused outside of the useMemo() scope
 export default Phone;
