@@ -1,5 +1,7 @@
 # Phone Catalogue
- 
+
+<img src="https://www.labrosb.com/project-thumbs/phones-catalogue2.PNG" height="180px" />
+
 An Example of simple product catalogue app made with React, NodeJS wrapped with Docker!
 
 
