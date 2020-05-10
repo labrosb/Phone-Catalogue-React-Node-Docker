@@ -32,4 +32,4 @@ We are using Jest along with puppeteer to perform realistic end-to-end test for 
 
 6. After the automated actions finish, the browser will close and you will see the summary with the passed/failed tests
 
-* If you want to run faster tests without visual represantation run "npm test" instead
+* If you want to run faster tests without visual represantation run "npm test" instead 
