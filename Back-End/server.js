@@ -13,9 +13,9 @@ app.use('/images', express.static(__dirname + '/images'));
 
 app.get('/phones', (req, res) => {
   if (data.length === 0) {
-    res.status(400).send("No Phones found!");
+    return res.status(400).send("No Phones found!");
   }
-  res.status(200).send(data);
+  return res.status(200).send(data);
 });
 
 app.listen(8080, () => {
